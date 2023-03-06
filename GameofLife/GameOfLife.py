@@ -41,10 +41,10 @@ def update(frameNum, img, grid, N, M, document):
     total = 0
 
     # TODO: Implement the rules of Conway's Game of Life
-    for i in range(0,N):
-        for j in range(0,M):
+    for i in range(0,M):
+        for j in range(0,N):
             neighbors = 0
-            if i>0 and i<N-1 and j>0 and j<M-1:
+            if i>0 and i<M-1 and j>0 and j<N-1:
                 for a in range(-1,2):
                     for b in range(-1,2):
                         if grid[i+a][j+b] == 255:
@@ -74,7 +74,7 @@ def update(frameNum, img, grid, N, M, document):
                 if grid[i][j] == 0:
                     if neighbors == 3:
                         newGrid[i][j] = 255
-            if i == 0 and j == M-1:
+            if i == 0 and j == N-1:
                 for a in range(0,2):
                     for b in range(-1,1):
                         if grid[i+a][j+b] == 255:
@@ -89,7 +89,7 @@ def update(frameNum, img, grid, N, M, document):
                 if grid[i][j] == 0:
                     if neighbors == 3:
                         newGrid[i][j] = 255
-            if i == N-1 and j == 0:
+            if i == M-1 and j == 0:
                 for a in range(-1,1):
                     for b in range(0,2):
                         if grid[i+a][j+b] == 255:
@@ -104,7 +104,7 @@ def update(frameNum, img, grid, N, M, document):
                 if grid[i][j] == 0:
                     if neighbors == 3:
                         newGrid[i][j] = 255
-            if i == N-1 and j == M-1:
+            if i == M-1 and j == N-1:
                 for a in range(-1,1):
                     for b in range(-1,1):
                         if grid[i+a][j+b] == 255:
@@ -119,7 +119,7 @@ def update(frameNum, img, grid, N, M, document):
                 if grid[i][j] == 0:
                     if neighbors == 3:
                         newGrid[i][j] = 255
-            if i == 0 and j > 1 and j < M-1:
+            if i == 0 and j > 1 and j < N-1:
                 for a in range(0,2):
                     for b in range(-1,2):
                         if grid[i+a][j+b] == 255:
@@ -134,7 +134,7 @@ def update(frameNum, img, grid, N, M, document):
                 if grid[i][j] == 0:
                     if neighbors == 3:
                         newGrid[i][j] = 255
-            if j == 0 and i > 1 and i < N-1:
+            if j == 0 and i > 1 and i < M-1:
                 for a in range(-1,2):
                     for b in range(0,2):
                         if grid[i+a][j+b] == 255:
@@ -149,7 +149,7 @@ def update(frameNum, img, grid, N, M, document):
                 if grid[i][j] == 0:
                     if neighbors == 3:
                         newGrid[i][j] = 255
-            if i == N-1 and j > 1 and j < M-1:
+            if i == M-1 and j > 1 and j < N-1:
                 for a in range(-1,1):
                     for b in range(-1,2):
                         if grid[i+a][j+b] == 255:
@@ -164,7 +164,7 @@ def update(frameNum, img, grid, N, M, document):
                 if grid[i][j] == 0:
                     if neighbors == 3:
                         newGrid[i][j] = 255
-            if j == M-1 and i > 1 and i < N-1:
+            if j == N-1 and i > 1 and i < M-1:
                 for a in range(-1,2):
                     for b in range(-1,1):
                         if grid[i+a][j+b] == 255:
@@ -185,42 +185,42 @@ def update(frameNum, img, grid, N, M, document):
                     and grid[i+2][j] == 0 and grid[i+2][j+1] == 0 and grid[i+2][j+2] == 0 and grid[i][j+2] == 0 \
                         and grid[i+1][j+2] == 0:
                     block+=1
-            if i == N-2 and j== 0:   
+            if i == M-2 and j== 0:   
                 if grid[i][j]==255 and grid[i][j+1]==255 and grid[i+1][j]==255 and grid[i+1][j+1]==255 \
                     and grid[i-1][j] == 0 and grid[i-1][j+1] == 0 and grid[i-1][j+2] == 0 and grid[i][j+2] == 0 \
                         and grid[i+1][j+2] == 0:
                     block+=1
-            if i == 0 and j== M-2:   
+            if i == 0 and j== N-2:   
                 if grid[i][j]==255 and grid[i][j+1]==255 and grid[i+1][j]==255 and grid[i+1][j+1]==255 \
                     and grid[i+2][j] == 0 and grid[i+2][j+1] == 0 and grid[i+2][j-1] == 0 and grid[i][j-1] == 0 \
                         and grid[i+1][j-1] == 0:
                     block+=1
-            if i == N-2 and j== M-2:   
+            if i == M-2 and j== N-2:   
                 if grid[i][j]==255 and grid[i][j+1]==255 and grid[i+1][j]==255 and grid[i+1][j+1]==255 \
                     and grid[i-1][j] == 0 and grid[i-1][j+1] == 0 and grid[i-1][j-1] == 0 and grid[i][j-1] == 0 \
                         and grid[i+1][j-1] == 0:
                     block+=1
-            if i > 0 and i < N-2 and j == 0:
+            if i > 0 and i < M-2 and j == 0:
                 if grid[i][j]==255 and grid[i][j+1]==255 and grid[i+1][j]==255 and grid[i+1][j+1]==255 \
                     and grid[i+2][j] == 0 and grid[i+2][j+1] == 0 and grid[i+2][j+2] == 0 and grid[i][j+2] == 0 \
                         and grid[i+1][j+2] == 0 and grid[i-1][j] == 0 and grid[i-1][j+1] == 0 and grid[i-1][j+2] == 0:
                     block+=1
-            if i > 0 and i < N-2 and j == M-2:
+            if i > 0 and i < M-2 and j == N-2:
                 if grid[i][j]==255 and grid[i][j+1]==255 and grid[i+1][j]==255 and grid[i+1][j+1]==255 \
                     and grid[i-1][j] == 0 and grid[i-1][j+1] == 0 and grid[i-1][j-1] == 0 and grid[i][j-1] == 0 \
                         and grid[i+1][j-1] == 0 and grid[i+2][j] == 0 and grid[i+2][j+1] == 0 and grid[i+2][j-1]:
                     block+=1
-            if j > 0 and j < M-2 and i== 0:
+            if j > 0 and j < N-2 and i== 0:
                 if grid[i][j]==255 and grid[i][j+1]==255 and grid[i+1][j]==255 and grid[i+1][j+1]==255 \
                     and grid[i+2][j] == 0 and grid[i+2][j+1] == 0 and grid[i+2][j-1] == 0 and grid[i][j-1] == 0 \
                         and grid[i+1][j-1] == 0 and grid[i+2][j+2] == 0 and grid[i][j+2] == 0 and grid[i+1][j+2] == 0:
                     block+=1
-            if j > 0 and j < M-2 and i== N-2:
+            if j > 0 and j < N-2 and i== M-2:
                 if grid[i][j]==255 and grid[i][j+1]==255 and grid[i+1][j]==255 and grid[i+1][j+1]==255 \
                     and grid[i-1][j] == 0 and grid[i-1][j+1] == 0 and grid[i-1][j+2] == 0 and grid[i][j+2] == 0 \
                         and grid[i+1][j+2] == 0 and grid[i-1][j-1] == 0 and grid[i][j-1] == 0 and grid[i+1][j-1] == 0:
                     block+=1
-            if j > 0 and j < M-2 and i > 0 and i < N-2:
+            if j > 0 and j < N-2 and i > 0 and i < M-2:
                 if grid[i][j]==255 and grid[i][j+1]==255 and grid[i+1][j]==255 and grid[i+1][j+1]==255 \
                     and grid[i-1][j] == 0 and grid[i-1][j+1] == 0 and grid[i-1][j+2] == 0 and grid[i][j+2] == 0 \
                         and grid[i+1][j+2] == 0 and grid[i-1][j-1] == 0 and grid[i][j-1] == 0 and grid[i+1][j-1] == 0 \
@@ -288,12 +288,11 @@ def main():
     #grid = randomGrid(N,M)
     # Uncomment lines to see the "glider" demo
     
-    grid = np.zeros(N*M).reshape(N, M)
+    grid = np.zeros(M*N).reshape(M,N)
     #addGlider(1, 1, grid)
 
     g.write("Simulation at " + str(date.today()) + "\n")
-    g.write("Universe size " + str(M) + " x " + str(N) + "\n")
-
+    g.write("Universe size " + str(N) + " x " + str(M) + "\n")
 
     for line in f:
         cell = line.split()
