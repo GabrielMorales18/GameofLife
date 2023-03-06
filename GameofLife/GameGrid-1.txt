@@ -1,5 +1,5 @@
 60 40 #Width Height
-20 # Generations
+200 # Generations
 16 5
 17 5
 16 6

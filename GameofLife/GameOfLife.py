@@ -28,6 +28,124 @@ def update(frameNum, img, grid, N, M, document):
     # and we go line by line 
     newGrid = grid.copy()
 
+    Block = np.array([[0,   0,   0, 0],
+                      [0, 255, 255, 0],
+                      [0, 255, 255, 0],
+                      [0,   0,  0,  0]])
+    
+    Beehive = np.array([[  0,   0,   0,   0,   0,   0],
+                        [  0,   0, 255, 255,   0,   0],
+                        [  0, 255,   0,   0, 255,   0],
+                        [  0,   0, 255, 255,   0,   0],
+                        [  0,   0,   0,   0,   0,   0]])
+
+    Loaf = np.array([[  0,   0,   0,   0,   0,   0],
+                     [  0,   0, 255, 255,   0,   0],
+                     [  0, 255,   0,   0, 255,   0],
+                     [  0,   0, 255,   0, 255,   0],
+                     [  0,   0,   0, 255,   0,   0],
+                     [  0,   0,   0,   0,   0,   0]])
+
+    Boat = np.array([[  0,   0,   0,   0,   0],
+                     [  0, 255, 255,   0,   0],
+                     [  0, 255,   0, 255,   0],
+                     [  0,   0, 255,   0,   0],
+                     [  0,   0,   0,   0,   0]])
+    
+    Tub = np.array([[  0,    0,   0,   0,   0],
+                     [  0,   0, 255,   0,   0],
+                     [  0, 255,   0, 255,   0],
+                     [  0,   0, 255,   0,   0],
+                     [  0,   0,   0,   0,   0]])
+    
+    Blinker1 = np.array([[  0,    0,   0],
+                         [  0,  255,   0],
+                         [  0,  255,   0],
+                         [  0,  255,   0],
+                         [  0,    0,   0]])
+                    
+    Blinker2 = np.array([[  0,   0,   0,   0,   0],
+                         [  0, 255, 255, 255,   0],
+                         [  0,   0,   0,   0,   0]])
+    
+    Toad1 = np.array([[  0,    0,   0,   0,   0,   0],
+                      [  0,    0,   0, 255,   0,   0],
+                      [  0,  255,   0,   0, 255,   0],
+                      [  0,  255,   0,   0, 255,   0],
+                      [  0,    0, 255,   0,   0,   0],
+                      [  0,    0,   0,   0,   0,   0]])
+                    
+    Toad2 = np.array([[  0,    0,   0,   0,   0,   0],
+                      [  0,    0, 255, 255, 255,   0],
+                      [  0,  255, 255, 255,   0,   0],
+                      [  0,    0,   0,   0,   0,   0]])
+
+    Beacon1 = np.array([[  0,    0,   0,   0,   0,   0],
+                        [  0,  255, 255,   0,   0,   0],
+                        [  0,  255, 255,   0,   0,   0],
+                        [  0,    0,   0, 255, 255,   0],
+                        [  0,    0,   0, 255, 255,   0],
+                        [  0,    0,   0,   0,   0,   0]])
+
+    Beacon2 = np.array([[  0,    0,   0,   0,   0,   0],
+                        [  0,  255, 255,   0,   0,   0],
+                        [  0,  255,   0,   0,   0,   0],
+                        [  0,    0,   0,   0, 255,   0],
+                        [  0,    0,   0, 255, 255,   0],
+                        [  0,    0,   0,   0,   0,   0]])
+
+    Glider1 = np.array([[  0,    0,   0,   0,   0],
+                        [  0,    0, 255,   0,   0],
+                        [  0,    0,   0, 255,   0],
+                        [  0,  255, 255, 255,   0],
+                        [  0,    0,   0,   0,   0]])
+
+    Glider2 = np.array([[  0,    0,   0,   0,   0],
+                        [  0,  255,   0, 255,   0],
+                        [  0,    0, 255, 255,   0],
+                        [  0,    0, 255,   0,   0],
+                        [  0,    0,   0,   0,   0]])
+
+    Glider3 = np.array([[  0,    0,   0,   0,   0],
+                        [  0,    0,   0, 255,   0],
+                        [  0,  255,   0, 255,   0],
+                        [  0,    0, 255, 255,   0],
+                        [  0,    0,   0,   0,   0]])
+
+    Glider4 = np.array([[  0,    0,   0,   0,   0],
+                        [  0,  255,   0,   0,   0],
+                        [  0,    0, 255, 255,   0],
+                        [  0,  255, 255,   0,   0],
+                        [  0,    0,   0,   0,   0]])
+
+    SpaceShip1 = np.array([[  0,    0,   0,   0,   0,   0,   0],
+                           [  0,  255,   0,   0, 255,   0,   0],
+                           [  0,    0,   0,   0,   0, 255,   0],
+                           [  0,  255,   0,   0,   0, 255,   0],
+                           [  0,    0, 255, 255, 255, 255,   0],
+                           [  0,    0,   0,   0,   0,   0,   0]])
+
+    SpaceShip2 = np.array([[  0,    0,   0,   0,   0,   0,   0],
+                           [  0,    0,   0, 255, 255,   0,   0],
+                           [  0,  255, 255,   0, 255, 255,   0],
+                           [  0,  255, 255, 255, 255,   0,   0],
+                           [  0,    0, 255, 255,   0,   0,   0],
+                           [  0,    0,   0,   0,   0,   0,   0]])
+
+    SpaceShip3 = np.array([[  0,    0,   0,   0,   0,   0,   0],
+                           [  0,    0, 255, 255, 255, 255,   0],
+                           [  0,  255,   0,   0,   0, 255,   0],
+                           [  0,    0,   0,   0,   0, 255,   0],
+                           [  0,  255,   0,   0, 255,   0,   0],
+                           [  0,    0,   0,   0,   0,   0,   0]])
+
+    SpaceShip4 = np.array([[  0,    0,   0,   0,   0,   0,   0],
+                           [  0,    0, 255, 255,   0,   0,   0],
+                           [  0,  255, 255, 255, 255,   0,   0],
+                           [  0,  255, 255,   0, 255, 255,   0],
+                           [  0,    0,   0, 255, 255,   0,   0],
+                           [  0,    0,   0,   0,   0,   0,   0]])
+
     block = 0
     beehive = 0
     loaf = 0
@@ -41,192 +159,66 @@ def update(frameNum, img, grid, N, M, document):
     total = 0
 
     # TODO: Implement the rules of Conway's Game of Life
-    for i in range(0,M):
-        for j in range(0,N):
+    for i in range(0,M+3):
+        for j in range(0,N+3):
             neighbors = 0
-            if i>0 and i<M-1 and j>0 and j<N-1:
-                for a in range(-1,2):
-                    for b in range(-1,2):
-                        if grid[i+a][j+b] == 255:
-                            neighbors += 1
-                        if a==0 and b==0 and grid[i+a][j+b] == 255:
-                            neighbors -= 1
-                if grid[i][j] == 255:
-                    if neighbors == 2 or neighbors == 3:    
-                        newGrid[i][j] = 255
+            if i>0 and i<M+1 and j>0 and j<N+1:
+                if grid[i-1,j-1] == 255:
+                    neighbors += 1
+                if grid[i-1,j] == 255:
+                    neighbors += 1    
+                if grid[i-1,j+1] == 255:
+                    neighbors += 1
+                if grid[i,j-1] == 255:
+                    neighbors += 1
+                if grid[i,j+1] == 255:
+                    neighbors += 1
+                if grid[i+1,j-1] == 255:
+                    neighbors += 1
+                if grid[i+1,j] == 255:
+                    neighbors += 1    
+                if grid[i+1,j+1] == 255:
+                    neighbors += 1
+                if grid[i,j] == 255:
+                    if neighbors == 2 or neighbors == 3:
+                        newGrid[i,j] = 255
                     else:
-                        newGrid[i][j] = 0
-                if grid[i][j] == 0:
+                        newGrid[i,j] = 0
+                if grid[i,j] == 0:
                     if neighbors == 3:
-                        newGrid[i][j] = 255
-            if i == 0 and j == 0:
-                for a in range(0,2):
-                    for b in range(0,2):
-                        if grid[i+a][j+b] == 255:
-                            neighbors += 1
-                        if a==0 and b==0 and grid[i+a][j+b] == 255:
-                            neighbors -= 1
-                if grid[i][j] == 255:
-                    if neighbors == 2 or neighbors == 3:    
-                        newGrid[i][j] = 255
-                    else:
-                        newGrid[i][j] = 0
-                if grid[i][j] == 0:
-                    if neighbors == 3:
-                        newGrid[i][j] = 255
-            if i == 0 and j == N-1:
-                for a in range(0,2):
-                    for b in range(-1,1):
-                        if grid[i+a][j+b] == 255:
-                            neighbors += 1
-                        if a==0 and b==0 and grid[i+a][j+b] == 255:
-                            neighbors -= 1
-                if grid[i][j] == 255:
-                    if neighbors == 2 or neighbors == 3:    
-                        newGrid[i][j] = 255
-                    else:
-                        newGrid[i][j] = 0
-                if grid[i][j] == 0:
-                    if neighbors == 3:
-                        newGrid[i][j] = 255
-            if i == M-1 and j == 0:
-                for a in range(-1,1):
-                    for b in range(0,2):
-                        if grid[i+a][j+b] == 255:
-                            neighbors += 1
-                        if a==0 and b==0 and grid[i+a][j+b] == 255:
-                            neighbors -= 1
-                if grid[i][j] == 255:
-                    if neighbors == 2 or neighbors == 3:    
-                        newGrid[i][j] = 255
-                    else:
-                        newGrid[i][j] = 0
-                if grid[i][j] == 0:
-                    if neighbors == 3:
-                        newGrid[i][j] = 255
-            if i == M-1 and j == N-1:
-                for a in range(-1,1):
-                    for b in range(-1,1):
-                        if grid[i+a][j+b] == 255:
-                            neighbors += 1
-                        if a==0 and b==0 and grid[i+a][j+b] == 255:
-                            neighbors -= 1
-                if grid[i][j] == 255:
-                    if neighbors == 2 or neighbors == 3:    
-                        newGrid[i][j] = 255
-                    else:
-                        newGrid[i][j] = 0
-                if grid[i][j] == 0:
-                    if neighbors == 3:
-                        newGrid[i][j] = 255
-            if i == 0 and j > 1 and j < N-1:
-                for a in range(0,2):
-                    for b in range(-1,2):
-                        if grid[i+a][j+b] == 255:
-                            neighbors += 1
-                        if a==0 and b==0 and grid[i+a][j+b] == 255:
-                            neighbors -= 1
-                if grid[i][j] == 255:
-                    if neighbors == 2 or neighbors == 3:    
-                        newGrid[i][j] = 255
-                    else:
-                        newGrid[i][j] = 0
-                if grid[i][j] == 0:
-                    if neighbors == 3:
-                        newGrid[i][j] = 255
-            if j == 0 and i > 1 and i < M-1:
-                for a in range(-1,2):
-                    for b in range(0,2):
-                        if grid[i+a][j+b] == 255:
-                            neighbors += 1
-                        if a==0 and b==0 and grid[i+a][j+b] == 255:
-                            neighbors -= 1
-                if grid[i][j] == 255:
-                    if neighbors == 2 or neighbors == 3:    
-                        newGrid[i][j] = 255
-                    else:
-                        newGrid[i][j] = 0
-                if grid[i][j] == 0:
-                    if neighbors == 3:
-                        newGrid[i][j] = 255
-            if i == M-1 and j > 1 and j < N-1:
-                for a in range(-1,1):
-                    for b in range(-1,2):
-                        if grid[i+a][j+b] == 255:
-                            neighbors += 1
-                        if a==0 and b==0 and grid[i+a][j+b] == 255:
-                            neighbors -= 1
-                if grid[i][j] == 255:
-                    if neighbors == 2 or neighbors == 3:    
-                        newGrid[i][j] = 255
-                    else:
-                        newGrid[i][j] = 0
-                if grid[i][j] == 0:
-                    if neighbors == 3:
-                        newGrid[i][j] = 255
-            if j == N-1 and i > 1 and i < M-1:
-                for a in range(-1,2):
-                    for b in range(-1,1):
-                        if grid[i+a][j+b] == 255:
-                            neighbors += 1
-                        if a==0 and b==0 and grid[i+a][j+b] == 255:
-                            neighbors -= 1
-                if grid[i][j] == 255:
-                    if neighbors == 2 or neighbors == 3:    
-                        newGrid[i][j] = 255
-                    else:
-                        newGrid[i][j] = 0
-                if grid[i][j] == 0:
-                    if neighbors == 3:
-                        newGrid[i][j] = 255
+                        newGrid[i,j] = 255
             #Block
-            if i == 0 and j== 0:   
-                if grid[i][j]==255 and grid[i][j+1]==255 and grid[i+1][j]==255 and grid[i+1][j+1]==255 \
-                    and grid[i+2][j] == 0 and grid[i+2][j+1] == 0 and grid[i+2][j+2] == 0 and grid[i][j+2] == 0 \
-                        and grid[i+1][j+2] == 0:
-                    block+=1
-            if i == M-2 and j== 0:   
-                if grid[i][j]==255 and grid[i][j+1]==255 and grid[i+1][j]==255 and grid[i+1][j+1]==255 \
-                    and grid[i-1][j] == 0 and grid[i-1][j+1] == 0 and grid[i-1][j+2] == 0 and grid[i][j+2] == 0 \
-                        and grid[i+1][j+2] == 0:
-                    block+=1
-            if i == 0 and j== N-2:   
-                if grid[i][j]==255 and grid[i][j+1]==255 and grid[i+1][j]==255 and grid[i+1][j+1]==255 \
-                    and grid[i+2][j] == 0 and grid[i+2][j+1] == 0 and grid[i+2][j-1] == 0 and grid[i][j-1] == 0 \
-                        and grid[i+1][j-1] == 0:
-                    block+=1
-            if i == M-2 and j== N-2:   
-                if grid[i][j]==255 and grid[i][j+1]==255 and grid[i+1][j]==255 and grid[i+1][j+1]==255 \
-                    and grid[i-1][j] == 0 and grid[i-1][j+1] == 0 and grid[i-1][j-1] == 0 and grid[i][j-1] == 0 \
-                        and grid[i+1][j-1] == 0:
-                    block+=1
-            if i > 0 and i < M-2 and j == 0:
-                if grid[i][j]==255 and grid[i][j+1]==255 and grid[i+1][j]==255 and grid[i+1][j+1]==255 \
-                    and grid[i+2][j] == 0 and grid[i+2][j+1] == 0 and grid[i+2][j+2] == 0 and grid[i][j+2] == 0 \
-                        and grid[i+1][j+2] == 0 and grid[i-1][j] == 0 and grid[i-1][j+1] == 0 and grid[i-1][j+2] == 0:
-                    block+=1
-            if i > 0 and i < M-2 and j == N-2:
-                if grid[i][j]==255 and grid[i][j+1]==255 and grid[i+1][j]==255 and grid[i+1][j+1]==255 \
-                    and grid[i-1][j] == 0 and grid[i-1][j+1] == 0 and grid[i-1][j-1] == 0 and grid[i][j-1] == 0 \
-                        and grid[i+1][j-1] == 0 and grid[i+2][j] == 0 and grid[i+2][j+1] == 0 and grid[i+2][j-1]:
-                    block+=1
-            if j > 0 and j < N-2 and i== 0:
-                if grid[i][j]==255 and grid[i][j+1]==255 and grid[i+1][j]==255 and grid[i+1][j+1]==255 \
-                    and grid[i+2][j] == 0 and grid[i+2][j+1] == 0 and grid[i+2][j-1] == 0 and grid[i][j-1] == 0 \
-                        and grid[i+1][j-1] == 0 and grid[i+2][j+2] == 0 and grid[i][j+2] == 0 and grid[i+1][j+2] == 0:
-                    block+=1
-            if j > 0 and j < N-2 and i== M-2:
-                if grid[i][j]==255 and grid[i][j+1]==255 and grid[i+1][j]==255 and grid[i+1][j+1]==255 \
-                    and grid[i-1][j] == 0 and grid[i-1][j+1] == 0 and grid[i-1][j+2] == 0 and grid[i][j+2] == 0 \
-                        and grid[i+1][j+2] == 0 and grid[i-1][j-1] == 0 and grid[i][j-1] == 0 and grid[i+1][j-1] == 0:
-                    block+=1
-            if j > 0 and j < N-2 and i > 0 and i < M-2:
-                if grid[i][j]==255 and grid[i][j+1]==255 and grid[i+1][j]==255 and grid[i+1][j+1]==255 \
-                    and grid[i-1][j] == 0 and grid[i-1][j+1] == 0 and grid[i-1][j+2] == 0 and grid[i][j+2] == 0 \
-                        and grid[i+1][j+2] == 0 and grid[i-1][j-1] == 0 and grid[i][j-1] == 0 and grid[i+1][j-1] == 0 \
-                            and grid[i+2][j+2] == 0 and grid[i][j+2] == 0 and grid[i+1][j+2] == 0:
-                    block+=1
-            
+            if np.array_equal(grid[i:i+4, j:j+4], Block, equal_nan=True):
+                block+=1
+            #Beehive
+            if np.array_equal(grid[i:i+5, j:j+6], Beehive, equal_nan=True):
+                beehive+=1
+            #Loaf
+            if np.array_equal(grid[i:i+6, j:j+6], Loaf, equal_nan=True):
+                loaf+=1
+            #Boat
+            if np.array_equal(grid[i:i+5, j:j+5], Boat, equal_nan=True):
+                boat+=1
+            #Tub
+            if np.array_equal(grid[i:i+5, j:j+5], Tub, equal_nan=True):
+                tub+=1
+            #Blinker
+            if np.array_equal(grid[i:i+5, j:j+3], Blinker1, equal_nan=True) or np.array_equal(grid[i:i+3, j:j+5], Blinker2, equal_nan=True):
+                blinker+=1
+            #Toad
+            if np.array_equal(grid[i:i+6, j:j+6], Toad1, equal_nan=True) or np.array_equal(grid[i:i+4, j:j+6], Toad2, equal_nan=True):
+                toad+=1
+            #Beacon
+            if np.array_equal(grid[i:i+6, j:j+6], Beacon1, equal_nan=True) or np.array_equal(grid[i:i+6, j:j+6], Beacon2, equal_nan=True):
+                beacon+=1
+            #Glider
+            if np.array_equal(grid[i:i+5, j:j+5], Glider1, equal_nan=True) or np.array_equal(grid[i:i+5, j:j+5], Glider2, equal_nan=True) or \
+                np.array_equal(grid[i:i+5, j:j+5], Glider3, equal_nan=True) or np.array_equal(grid[i:i+5, j:j+5], Glider4, equal_nan=True):
+                glider+=1
+            #SpaceShip
+            if np.array_equal(grid[i:i+6, j:j+7 ], SpaceShip1, equal_nan=True) or np.array_equal(grid[i:i+6, j:j+7], SpaceShip2, equal_nan=True) or \
+                np.array_equal(grid[i:i+6, j:j+7], SpaceShip3, equal_nan=True) or np.array_equal(grid[i:i+6, j:j+7], SpaceShip4, equal_nan=True):
+                lgSpaceShip+=1
 
     total = block+beehive+loaf+boat+tub+blinker+toad+beacon+glider+lgSpaceShip
 
@@ -256,7 +248,7 @@ def update(frameNum, img, grid, N, M, document):
     document.write("--------------------------------\n")
 
     # update data
-    img.set_data(grid)
+    img.set_data(grid[1:M+1,1:N+1])
     grid[:] = newGrid[:]
 
     return img,
@@ -280,7 +272,7 @@ def main():
     generations = int(gen[0])
 
     # set animation update interval
-    updateInterval = 500
+    updateInterval = 10
 
     # declare grid
     grid = np.array([])
@@ -288,7 +280,7 @@ def main():
     #grid = randomGrid(N,M)
     # Uncomment lines to see the "glider" demo
     
-    grid = np.zeros(M*N).reshape(M,N)
+    grid = np.zeros((M+2)*(N+2)).reshape(M+2,N+2)
     #addGlider(1, 1, grid)
 
     g.write("Simulation at " + str(date.today()) + "\n")
@@ -296,11 +288,12 @@ def main():
 
     for line in f:
         cell = line.split()
-        grid[int(cell[1])][int(cell[0])] = 255
+        grid[int(cell[1])+1,int(cell[0])+1] = 255
 
     # set up animation
     fig, ax = plt.subplots()
-    img = ax.imshow(grid, interpolation='nearest')
+    img = ax.imshow(grid[1:M+1,1:N+1], interpolation='nearest')
+    plt.axis('off')
     
     ani = animation.FuncAnimation(fig, update, fargs=(img, grid, N, M, g),
                                   frames = generations-1,
