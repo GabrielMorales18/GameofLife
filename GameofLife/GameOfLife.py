@@ -28,6 +28,8 @@ def update(frameNum, img, grid, N, M, document):
     # and we go line by line 
     newGrid = grid.copy()
 
+    #The grids for every figure to check
+
     Block = np.array([[0,   0,   0, 0],
                       [0, 255, 255, 0],
                       [0, 255, 255, 0],
@@ -146,6 +148,8 @@ def update(frameNum, img, grid, N, M, document):
                            [  0,    0,   0, 255, 255,   0,   0],
                            [  0,    0,   0,   0,   0,   0,   0]])
 
+    #Number of figures found
+
     block = 0
     beehive = 0
     loaf = 0
@@ -162,6 +166,7 @@ def update(frameNum, img, grid, N, M, document):
     for i in range(0,M+3):
         for j in range(0,N+3):
             neighbors = 0
+            #Check neighbors
             if i>0 and i<M+1 and j>0 and j<N+1:
                 if grid[i-1,j-1] == 255:
                     neighbors += 1
@@ -222,8 +227,11 @@ def update(frameNum, img, grid, N, M, document):
 
     total = block+beehive+loaf+boat+tub+blinker+toad+beacon+glider+lgSpaceShip
 
+    #In case there are no figure it place 1 to evade division by 0
+    cero = False
     if total == 0:
         total = 1
+        cero = True
 
     if frameNum == 0:
         document.write("Iteration: " + str(frameNum+1) + "\n")
@@ -244,7 +252,10 @@ def update(frameNum, img, grid, N, M, document):
     document.write("|   Glidier  | "+str(glider)+" | "+str((glider/total)*100)+" |\n")
     document.write("| LG sp ship | "+str(lgSpaceShip)+" | "+str((lgSpaceShip/total)*100)+" |\n")
     document.write("--------------------------------\n")
-    document.write("|    Total   | "+str(total)+" |         |\n")
+    if cero:
+        document.write("|    Total   | "+str(total-1)+" |         |\n")
+    else:
+        document.write("|    Total   | "+str(total)+" |         |\n")
     document.write("--------------------------------\n")
 
     # update data
@@ -260,7 +271,7 @@ def main():
     # parse arguments
     parser = argparse.ArgumentParser(description="Runs Conway's Game of Life system.py.")
     # TODO: add arguments
-    f = open("GameGrid-1.txt", "r")
+    f = open("GameGrid-5.txt", "r")
     g = open("SimulationOutput.txt", "w")
 
     # set grid size
@@ -280,6 +291,7 @@ def main():
     #grid = randomGrid(N,M)
     # Uncomment lines to see the "glider" demo
     
+    #Create a bigger grid to evade corner and border cases
     grid = np.zeros((M+2)*(N+2)).reshape(M+2,N+2)
     #addGlider(1, 1, grid)
 
@@ -292,6 +304,7 @@ def main():
 
     # set up animation
     fig, ax = plt.subplots()
+    #Evade the extra cells of the grid in the image
     img = ax.imshow(grid[1:M+1,1:N+1], interpolation='nearest')
     plt.axis('off')
     
